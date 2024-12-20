@@ -27,7 +27,7 @@ Compiling 1 file (.ex)
     └─ lib/templates/component_in_file.html.heex:1: Thingy.component_in_file/1
 
 Generated ghost_warnings app
-~/ghost_warnings$ mix compile
+~/ghost_warnings$ mix compile --warnings-as-errors
 ~/ghost_warnings$ echo $?
 0
 ```
