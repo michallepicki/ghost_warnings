@@ -1,18 +1,8 @@
 defmodule GhostWarnings do
-  @moduledoc """
-  Documentation for `GhostWarnings`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> GhostWarnings.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def color(user) do
+    case user do
+      :martha -> :blue
+      _ -> :yellow
+    end
   end
 end
