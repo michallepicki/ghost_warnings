@@ -1,21 +1,33 @@
 # GhostWarnings
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ghost_warnings` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:ghost_warnings, "~> 0.1.0"}
-  ]
-end
 ```
+~/ghost_warnings$ mix compile
+Compiling 1 file (.ex)
+    warning: comparison between distinct types found:
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ghost_warnings>.
+        GhostWarnings.color(assigns.user) == :red
 
+    given types:
+
+        dynamic(:blue or :yellow) == :red
+
+    where "assigns" was given the type:
+
+        # type: dynamic()
+        # from: lib/templates/component_in_file.html.heex:4
+        assigns
+
+    While Elixir can compare across all types, you are comparing across types which are always disjoint, and the result is either always true or always false
+
+    typing violation found at:
+    │
+  1 │ <div data-warning-shown-only-once={GhostWarnings.color(@user) == :red}></div>
+    │ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    │
+    └─ lib/templates/component_in_file.html.heex:1: Thingy.component_in_file/1
+
+Generated ghost_warnings app
+~/ghost_warnings$ mix compile
+~/ghost_warnings$ echo $?
+0
+```
